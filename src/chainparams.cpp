@@ -119,7 +119,7 @@ public:
 	m_assumed_chain_state_size = 2;
 
 	consensus.fStrictChainId = true;
-	consensus.nAuxpowChainId = 16;
+	consensus.nAuxpowChainId = 0xbe0e;
 	consensus.nAuxpowStartHeight = 975000;
 
 	genesis = CreateGenesisBlock(1659708882, 2000096520, 0x1e0ffff0, 1, 1000000 * COIN); // new value
@@ -233,9 +233,13 @@ public:
 	m_assumed_blockchain_size = 4;
 	m_assumed_chain_state_size = 1;
 
-	genesis = CreateGenesisBlock(1659708882, 223176, 0x1e0ffff0, 1, 1000000 * COIN);
+	consensus.fStrictChainId = true;
+	consensus.nAuxpowChainId = 0xbe0f;
+	consensus.nAuxpowStartHeight = 50;
+
+	genesis = CreateGenesisBlock(1744018230, 245836, 0x1e0ffff0, 1, 1000000 * COIN);
 	consensus.hashGenesisBlock = genesis.GetHash();
-	assert(consensus.hashGenesisBlock == uint256S("0xfc87d3af1c388f561386e08cfb74819cc04cf33ddb6c39f0bfb685048d3dfb2a"));
+	assert(consensus.hashGenesisBlock == uint256S("0x1f847ccbaa8055eb1af82aef862aeb53d1d4d3ff81a8bcc514f6c071a4e6e580"));
 	assert(genesis.hashMerkleRoot == uint256S("0x7055a6ae72bdfdaafaac2619d61684e037f477870d70951bd3bf6964d36bc405"));
 
 	vFixedSeeds.clear();
@@ -306,9 +310,6 @@ public:
 	consensus.fSimplifiedRewards = true;
 	consensus.nRuleChangeActivationThreshold = 108; // 75% for testchains
 	consensus.nMinerConfirmationWindow = 144;
-	consensus.nAuxpowStartHeight = 0;
-	consensus.nAuxpowChainId = 16;
-	consensus.fStrictChainId = true;
 
 	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].bit = 28;
 	consensus.vDeployments[Consensus::DEPLOYMENT_TESTDUMMY].nStartTime = 0;
@@ -334,6 +335,11 @@ public:
 	nPruneAfterHeight = 1000;
 	m_assumed_blockchain_size = 0;
 	m_assumed_chain_state_size = 0;
+
+	//unused
+	consensus.fStrictChainId = true;
+	consensus.nAuxpowChainId = 0xbe10;
+	consensus.nAuxpowStartHeight = 0;
 
 	UpdateActivationParametersFromArgs(args);
 
