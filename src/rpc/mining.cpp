@@ -990,7 +990,7 @@ static RPCHelpMan submitblock()
     }
 
     bool new_block;
-    auto sc = std::make_shared<submitblock_StateCatcher>(block.GetPoWHash());
+    auto sc = std::make_shared<submitblock_StateCatcher>(block.GetHash());
     RegisterSharedValidationInterface(sc);
     bool accepted = EnsureRefChainman(request.context).ProcessNewBlock(Params(), blockptr, /* fForceProcessing */ true, /* fNewBlock */ &new_block);
     UnregisterSharedValidationInterface(sc);
